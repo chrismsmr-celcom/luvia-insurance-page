@@ -1,199 +1,357 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection Voyage & Bagages - Luvia Place</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protection Voyage & Bagages · Luvia Place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&display=swap" rel="stylesheet" />
     <style>
-        :root {
-            --primary-color: #0f172a; /* Slate 900 */
-            --accent-color: #0284c7;  /* Sky 600 */
-            --text-color: #334155;    /* Slate 700 */
-            --text-light: #64748b;    /* Slate 500 */
-            --bg-color: #f8fafc;      /* Slate 50 */
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;  /* Slate 200 */
-        }
-
+        /* — reset & base — */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f1f5f9;
+            color: #0b1a2b;
             line-height: 1.6;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border-color);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
-        }
-
-        .logo-container {
+            padding: 24px 16px;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
+            justify-content: center;
         }
 
-        .brand-logo {
+        .card {
+            max-width: 880px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.25), 0 8px 24px -8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* — header avec logo — */
+        .brand-bar {
+            padding: 28px 36px 16px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .logo {
             max-width: 180px;
             height: auto;
-            object-fit: contain;
+            display: inline-block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.02));
         }
 
-        h1 {
+        /* — hero — */
+        .hero {
+            width: 100%;
+            height: 280px;
+            background-image: url('https://images.unsplash.com/photo-1474524955719-b9f87c50ce47?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center 30%;
+            background-color: #0f1f2e;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 40px 30px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(2, 132, 199, 0.2) 100%);
+            backdrop-filter: blur(2px);
+            padding: 18px 28px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-overlay h1 {
             font-size: 26px;
-            color: var(--primary-color);
-            margin-top: 15px;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            color: white;
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin: 0;
         }
 
-        .intro {
+        .hero-overlay .sub {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.85);
+            margin-left: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* — contenu — */
+        .content {
+            padding: 40px 44px 48px;
+        }
+
+        .lead {
             font-size: 16px;
-            color: var(--text-light);
-            margin-top: 8px;
+            color: #1e293b;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #eef2f6;
+            font-weight: 450;
+        }
+
+        .lead strong {
+            color: #0284c7;
+            font-weight: 600;
         }
 
         h2 {
-            font-size: 19px;
-            color: var(--primary-color);
-            margin: 32px 0 14px 0;
+            font-size: 20px;
             font-weight: 600;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 12px;
+            color: #0f172a;
+            margin: 40px 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 span {
+            background: #0284c7;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            flex-shrink: 0;
         }
 
         p {
-            margin-bottom: 16px;
-            font-size: 15px;
+            font-size: 15.5px;
+            margin-bottom: 18px;
+            color: #1e293b;
+            max-width: 720px;
         }
 
-        .highlight-box {
-            background-color: #f0f9ff; /* Sky 50 */
-            border-left: 4px solid var(--accent-color);
-            padding: 20px;
-            border-radius: 4px;
-            margin: 25px 0;
+        .highlight {
+            background: #f0f9ff;
+            border-radius: 20px;
+            padding: 22px 28px;
+            margin: 32px 0 28px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.04);
         }
 
-        .highlight-box p {
-            margin-bottom: 0;
+        .highlight p {
+            margin: 0;
             font-weight: 500;
-            color: #0369a1; /* Sky 700 */
+            color: #0369a1;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
         }
 
-        ul, ol {
-            margin-bottom: 20px;
-            padding-left: 20px;
+        ul,
+        ol {
+            padding-left: 24px;
+            margin-bottom: 24px;
         }
 
         li {
-            margin-bottom: 10px;
             font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 4px;
         }
 
         li strong {
-            color: var(--primary-color);
+            color: #0f172a;
+            font-weight: 600;
         }
 
-        .btn-container {
+        .badge-group {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin: 42px 0 12px;
+            padding-top: 32px;
+            border-top: 1px solid #eef2f6;
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            color: white;
             text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 6px;
             font-weight: 500;
             font-size: 15px;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            text-align: center;
-            width: 100%;
-            max-width: 350px;
+            padding: 14px 36px;
+            border-radius: 60px;
+            transition: 0.25s ease;
+            min-width: 190px;
+            border: 1px solid transparent;
+            letter-spacing: 0.2px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
         }
 
         .btn:hover {
-            background-color: var(--accent-color);
+            background: #0284c7;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 24px -8px rgba(2, 132, 199, 0.3);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
+        .btn-outline {
+            background: transparent;
+            color: #0f172a;
+            border: 1px solid #d4dce6;
+            box-shadow: none;
         }
 
-        .btn-secondary:hover {
-            background-color: var(--bg-color);
-            color: var(--primary-color);
+        .btn-outline:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.08);
         }
 
-        footer {
+        .footer-note {
             text-align: center;
-            margin-top: 40px;
             font-size: 13px;
-            color: var(--text-light);
+            color: #94a3b8;
+            padding: 20px 0 4px;
+            border-top: 1px solid #ecf1f7;
+            margin-top: 30px;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-note span {
+            color: #475569;
+        }
+
+        /* — responsive — */
+        @media (max-width: 700px) {
+            body {
+                padding: 12px;
+            }
+            .card {
+                border-radius: 28px;
+            }
+            .brand-bar {
+                padding: 20px 16px 10px;
+            }
+            .hero {
+                height: 200px;
+                padding: 0 20px 20px;
+            }
+            .hero-overlay {
+                padding: 12px 20px;
+            }
+            .hero-overlay h1 {
+                font-size: 20px;
+            }
+            .hero-overlay .sub {
+                font-size: 12px;
+                margin-left: 6px;
+                display: block;
+                margin-top: 4px;
+            }
+            .content {
+                padding: 28px 20px 32px;
+            }
+            h2 {
+                font-size: 18px;
+                margin-top: 32px;
+            }
+            .highlight {
+                padding: 18px 20px;
+            }
+            .btn {
+                width: 100%;
+                min-width: unset;
+                padding: 14px 20px;
+            }
+            .badge-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-overlay h1 {
+                font-size: 17px;
+            }
+            .hero-overlay .sub {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="https://whitelabel-production-addonsstac-whitelabelbucket-rr8j7rddkm0b.s3.amazonaws.com/images/colorLogo-1780309983098" alt="Luvia Place Logo" class="brand-logo">
+    <div class="card">
+
+        <!-- Logo -->
+        <div class="brand-bar">
+            <img src="https://whitelabel-production-addonsstac-whitelabelbucket-rr8j7rddkm0b.s3.amazonaws.com/images/colorLogo-1780309983098" alt="Luvia Place" class="logo" />
+        </div>
+
+        <!-- Hero avec titre intégré -->
+        <div class="hero">
+            <div class="hero-overlay">
+                <h1>
+                    Protection Voyage &amp; Bagages
+                    <span class="sub">· couverture incluse</span>
+                </h1>
             </div>
-            <h1>Protection Voyage & Bagages</h1>
-            <p class="intro">Ce qu'il faut savoir sur votre couverture incluse</p>
-        </header>
+        </div>
 
-        <main>
-            <p>Chez Luvia Place, nous voulons que votre expérience de réservation et votre voyage soient aussi fluides que sereins. C'est pourquoi, pour chaque billet d'avion acheté sur notre plateforme, une protection pour vos bagages est automatiquement incluse, sans aucun frais supplémentaire ni démarche administrative de votre part.</p>
-            
-            <p>Cependant, pour que vous voyagiez en toute lucidité, il est important de comprendre le cadre juridique et le fonctionnement de cette couverture.</p>
+        <!-- Contenu principal -->
+        <div class="content">
 
-            <h2>1. Cadre Juridique et Rôle de Luvia Place</h2>
-            <p>Luvia Place est une plateforme numérique de réservation de services de voyage (billets d'avion et hébergements). <strong>Luvia Place n'exerce pas l'activité de compagnie d'assurance, de courtier, ni d'intermédiaire direct en assurance.</strong></p>
-            <p>La protection dont vous bénéficiez est un avantage commercial acquis par Luvia Place auprès de ses fournisseurs et partenaires de distribution B2B. Elle est opérée de manière finale par des compagnies d'assurance agréées (telles que Tune Protect). Par conséquent, aucun contrat d'assurance n'est conclu directement entre Luvia Place et l'utilisateur final.</p>
+            <p class="lead">
+                Chez <strong>Luvia Place</strong>, nous voulons que votre expérience de réservation et votre voyage soient aussi fluides que sereins. C'est pourquoi, pour chaque billet d'avion acheté sur notre plateforme, une protection pour vos bagages est automatiquement incluse, sans aucun frais supplémentaire ni démarche administrative de votre part.
+            </p>
+            <p>
+                Cependant, pour que vous voyagiez en toute lucidité, il est important de comprendre le cadre juridique et le fonctionnement de cette couverture.
+            </p>
 
-            <h2>2. Exécution et Gestion des Sinistres</h2>
-            <p>La couverture de vos bagages (perte, vol ou détérioration) est régie <strong>exclusivement</strong> par les conditions générales, les plafonds d'indemnisation, les franchises et les exclusions de la compagnie d'assurance émettrice qui couvre votre trajet.</p>
-            
-            <div class="highlight-box">
-                <p>En cas de sinistre, seule la compagnie d'assurance agréée est habilitée à analyser votre dossier, à valider votre éligibilité et à procéder à l'indemnisation. Luvia Place décline toute responsabilité quant au traitement, aux délais ou aux décisions de refus d'indemnisation de l'assureur.</p>
+            <!-- 1 -->
+            <h2><span>1</span> Cadre Juridique et Rôle de Luvia Place</h2>
+            <p>
+                Luvia Place est une plateforme numérique de réservation de services de voyage (billets d'avion et hébergements). <strong>Luvia Place n'exerce pas l'activité de compagnie d'assurance, de courtier, ni d'intermédiaire direct en assurance.</strong>
+            </p>
+            <p>
+                La protection dont vous bénéficiez est un avantage commercial acquis par Luvia Place auprès de ses fournisseurs et partenaires de distribution B2B. Elle est opérée de manière finale par des compagnies d'assurance agréées (telles que Tune Protect). Par conséquent, aucun contrat d'assurance n'est conclu directement entre Luvia Place et l'utilisateur final.
+            </p>
+
+            <!-- 2 -->
+            <h2><span>2</span> Exécution et Gestion des Sinistres</h2>
+            <p>
+                La couverture de vos bagages (perte, vol ou détérioration) est régie <strong>exclusivement</strong> par les conditions générales, les plafonds d'indemnisation, les franchises et les exclusions de la compagnie d'assurance émettrice qui couvre votre trajet.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    En cas de sinistre, seule la compagnie d'assurance agréée est habilitée à analyser votre dossier, à valider votre éligibilité et à procéder à l'indemnisation. Luvia Place décline toute responsabilité quant au traitement, aux délais ou aux décisions de refus d'indemnisation de l'assureur.
+                </p>
             </div>
 
-            <h2>3. Procédure en Cas de Sinistre</h2>
+            <!-- 3 -->
+            <h2><span>3</span> Procédure en Cas de Sinistre</h2>
             <p>Si vos bagages sont perdus ou endommagés durant votre trajet, veuillez suivre scrupuleusement les étapes suivantes :</p>
             <ol>
                 <li><strong>Déclaration à l'aéroport :</strong> Faites constater le sinistre immédiatement auprès de la compagnie aérienne qui opère votre vol avant de quitter l'aéroport afin d'obtenir un rapport d'irrégularité de propriété (P.I.R.).</li>
@@ -201,20 +359,31 @@
                 <li><strong>Soumission du dossier :</strong> Contactez et transmettez votre demande directement à la compagnie d'assurance en y joignant toutes les pièces justificatives requises (P.I.R., billets, reçus).</li>
             </ol>
 
-            <h2>4. Liens Utiles et Conditions Générales de l'Assureur</h2>
-            <p>Les conditions exactes de prise en charge dépendent de votre destination et de la réglementation de la compagnie aérienne partenaire. Vous pouvez accéder directement aux portails d'information et de déclaration de l'assureur Tune Protect via les liens officiels ci-dessous :</p>
+            <!-- 4 -->
+            <h2><span>4</span> Liens Utiles &amp; Conditions de l'Assureur</h2>
+            <p>
+                Les conditions exactes de prise en charge dépendent de votre destination et de la réglementation de la compagnie aérienne partenaire. Vous pouvez accéder directement aux portails d'information et de déclaration de l'assureur Tune Protect via les liens officiels ci-dessous :
+            </p>
 
-            <div class="btn-container">
-                <a href="https://www.tuneprotect.com/" class="btn" target="_blank">Consulter Tune Protect</a>
-                <a href="https://www.tuneprotect.com/my/how-to-claim/" class="btn btn-secondary" target="_blank">Déclarer un Sinistre (How to Claim)</a>
-                <a href="https://www.tuneprotect.com/my/help-support/" class="btn btn-secondary" target="_blank">Centre d'Aide & Support</a>
+            <!-- Boutons épurés -->
+            <div class="badge-group">
+                <a href="https://www.tuneprotect.com/" class="btn" target="_blank">
+                    Consulter Tune Protect
+                </a>
+                <a href="https://www.tuneprotect.com/my/how-to-claim/" class="btn btn-outline" target="_blank">
+                    Déclarer un Sinistre
+                </a>
+                <a href="https://www.tuneprotect.com/my/help-support/" class="btn btn-outline" target="_blank">
+                    Centre d'Aide &amp; Support
+                </a>
             </div>
-        </main>
-    </div>
 
-    <footer>
-        <p>&copy; 2026 luviaplace.com. Tous droits réservés. Luvia Place est une marque de services de voyage.</p>
-    </footer>
+            <div class="footer-note">
+                <span>&copy; 2026 luviaplace.com</span> · Tous droits réservés. Luvia Place est une marque de services de voyage.
+            </div>
+
+        </div> <!-- /content -->
+    </div> <!-- /card -->
 
 </body>
 </html>
