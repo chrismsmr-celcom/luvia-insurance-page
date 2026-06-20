@@ -819,6 +819,42 @@ h2 .badge svg {
     height: 16px;
     stroke: white;
 }
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+    gap: 10px;
+}
+
+.logo {
+    height: 44px;
+    width: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #153FAD;
+    letter-spacing: 0.5px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Version responsive pour mobile */
+@media (max-width: 480px) {
+    .logo {
+        height: 36px;
+    }
+    .logo-text {
+        font-size: 15px;
+    }
+    .logo-link {
+        gap: 6px;
+    }
+}
     </style>
 </head>
 
@@ -827,9 +863,10 @@ h2 .badge svg {
     <!-- ========== HEADER ========== -->
     <header class="site-header" role="banner">
         <div class="header-inner">
-            <a href="https://luviaplace.com" class="logo-link" target="_blank" rel="noopener" aria-label="Luvia Place - Accueil">
-                <img src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" alt="Luvia Place" class="logo" />
-            </a>
+           <a href="https://luviaplace.com" class="logo-link" target="_blank" rel="noopener" aria-label="Luvia Place - Accueil">
+    <img src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" alt="Luvia Place" class="logo" />
+    <span class="logo-text">Insurance</span>
+</a>
 
             <nav class="nav-desktop" role="navigation" aria-label="Navigation principale">
                 <a href="https://luviaplace.com" target="_blank" rel="noopener">Luvia Place</a>
