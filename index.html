@@ -4,15 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Protection Voyage & Bagages · Luvia Place</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" />
+    <link rel="apple-touch-icon" href="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
     <style>
-        /* — reset & base — */
+        /* ---------- reset & base ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -20,98 +30,385 @@
             background: #f1f5f9;
             color: #0b1a2b;
             line-height: 1.6;
-            padding: 24px 16px;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        .card {
-            max-width: 880px;
-            width: 100%;
+        /* ---------- animations ---------- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        }
+
+        .animate-1 {
+            animation-delay: 0.1s;
+        }
+        .animate-2 {
+            animation-delay: 0.25s;
+        }
+        .animate-3 {
+            animation-delay: 0.4s;
+        }
+        .animate-4 {
+            animation-delay: 0.55s;
+        }
+        .animate-5 {
+            animation-delay: 0.7s;
+        }
+        .animate-6 {
+            animation-delay: 0.85s;
+        }
+        .animate-7 {
+            animation-delay: 1.0s;
+        }
+
+        /* ---------- header ---------- */
+        .site-header {
             background: #ffffff;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.25), 0 8px 24px -8px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
-        /* — header avec logo — */
-        .brand-bar {
-            padding: 28px 36px 16px;
-            text-align: center;
-            background: white;
-            border-bottom: 1px solid #edf2f7;
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.85;
         }
 
         .logo {
-            max-width: 180px;
-            height: auto;
-            display: inline-block;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.02));
+            height: 44px;
+            width: auto;
+            display: block;
+            border-radius: 4px;
         }
 
-        /* — hero — */
-        .hero {
-            width: 100%;
-            height: 280px;
-            background-image: url('https://images.unsplash.com/photo-1474524955719-b9f87c50ce47?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center 30%;
-            background-color: #0f1f2e;
-            position: relative;
+        /* navigation desktop */
+        .nav-desktop {
             display: flex;
-            align-items: flex-end;
-            padding: 0 40px 30px;
+            align-items: center;
+            gap: 32px;
         }
 
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(2, 132, 199, 0.2) 100%);
-            backdrop-filter: blur(2px);
-            padding: 18px 28px;
-            border-radius: 60px;
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        .nav-desktop a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1e293b;
+            transition: color 0.2s ease;
+            letter-spacing: 0.2px;
+            position: relative;
         }
 
-        .hero-overlay h1 {
-            font-size: 26px;
-            font-weight: 700;
+        .nav-desktop a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #0284c7;
+            transition: width 0.25s ease;
+        }
+
+        .nav-desktop a:hover {
+            color: #0284c7;
+        }
+
+        .nav-desktop a:hover::after {
+            width: 100%;
+        }
+
+        .nav-desktop .btn-nav {
+            background: #0f172a;
+            color: white !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .nav-desktop .btn-nav::after {
+            display: none;
+        }
+
+        .nav-desktop .btn-nav:hover {
+            background: #0284c7;
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        /* hamburger (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background 0.15s ease;
+        }
+
+        .hamburger:hover {
+            background: #f1f5f9;
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid #0284c7;
+            outline-offset: 2px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: #0f172a;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        /* mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 20px 24px 28px;
+            gap: 16px;
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.06);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e293b;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            transition: color 0.15s ease, padding-left 0.15s ease;
+            border-radius: 4px;
+        }
+
+        .mobile-menu a:hover {
+            color: #0284c7;
+            padding-left: 8px;
+        }
+
+        .mobile-menu a:focus-visible {
+            outline: 2px solid #0284c7;
+            outline-offset: 2px;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu .btn-mobile {
+            background: #0f172a;
+            color: white !important;
+            padding: 14px 20px;
+            border-radius: 40px;
+            text-align: center;
+            border-bottom: none !important;
+            margin-top: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-menu .btn-mobile:hover {
+            background: #0284c7;
+            padding-left: 20px;
+            color: white !important;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        /* ---------- hero video avec dots ---------- */
+        .hero-video {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background: #0f1f2e;
+        }
+
+        .hero-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Effet de dots animés */
+        .hero-dots {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+            animation: dotsMove 24s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes dotsMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(28px, 28px);
+            }
+        }
+
+        .hero-overlay-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.35);
             color: white;
+            text-align: center;
+            padding: 24px;
+            backdrop-filter: blur(1px);
+        }
+
+        .hero-overlay-content h1 {
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
             letter-spacing: -0.3px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            margin: 0;
+            margin-bottom: 6px;
         }
 
-        .hero-overlay .sub {
-            font-size: 14px;
+        .hero-overlay-content p {
+            font-size: 18px;
+            opacity: 0.92;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.85);
-            margin-left: 12px;
-            letter-spacing: 0.3px;
         }
 
-        /* — contenu — */
-        .content {
+        /* ---------- main content ---------- */
+        .page-wrap {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px 40px;
+            width: 100%;
+        }
+
+        .hero-card {
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.06);
+            border: 1px solid #edf2f7;
+        }
+
+        /* trust indicators */
+        .trust-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 40px;
+            justify-content: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #ecf1f7;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .trust-item .icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .content-inner {
             padding: 40px 44px 48px;
         }
 
-        .lead {
-            font-size: 16px;
-            color: #1e293b;
-            margin-bottom: 28px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid #eef2f6;
-            font-weight: 450;
+        .content-inner h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
         }
 
-        .lead strong {
-            color: #0284c7;
+        .content-inner .subhead {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #ecf1f7;
+            padding-bottom: 20px;
+        }
+
+        .content-inner p {
+            font-size: 15.5px;
+            margin-bottom: 18px;
+            color: #1e293b;
+        }
+
+        .content-inner strong {
+            color: #0f172a;
             font-weight: 600;
+        }
+
+        .highlight-box {
+            background: #f0f9ff;
+            border-radius: 20px;
+            padding: 22px 28px;
+            margin: 32px 0 28px;
+            border: 1px solid #dbeafe;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-weight: 500;
+            color: #0369a1;
         }
 
         h2 {
@@ -124,7 +421,7 @@
             gap: 10px;
         }
 
-        h2 span {
+        h2 .badge {
             background: #0284c7;
             color: white;
             font-size: 14px;
@@ -136,31 +433,6 @@
             justify-content: center;
             border-radius: 40px;
             flex-shrink: 0;
-        }
-
-        p {
-            font-size: 15.5px;
-            margin-bottom: 18px;
-            color: #1e293b;
-            max-width: 720px;
-        }
-
-        .highlight {
-            background: #f0f9ff;
-            border-radius: 20px;
-            padding: 22px 28px;
-            margin: 32px 0 28px;
-            border: 1px solid #dbeafe;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.04);
-        }
-
-        .highlight p {
-            margin: 0;
-            font-weight: 500;
-            color: #0369a1;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
         }
 
         ul,
@@ -175,17 +447,68 @@
             padding-left: 4px;
         }
 
-        li strong {
-            color: #0f172a;
-            font-weight: 600;
+        /* FAQ section - redirige vers l'assureur */
+        .faq-section {
+            margin: 44px 0 20px;
+            padding-top: 32px;
+            border-top: 1px solid #ecf1f7;
         }
 
-        .badge-group {
+        .faq-section .faq-intro {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 22px;
+            border: 1px solid #ecf1f7;
+            transition: all 0.2s ease;
+        }
+
+        .faq-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .faq-item .question {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .faq-item .answer {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .faq-item .answer a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-item .answer a:hover {
+            text-decoration: underline;
+        }
+
+        /* buttons */
+        .btn-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 18px;
+            gap: 16px;
             justify-content: center;
-            margin: 42px 0 12px;
+            margin: 40px 0 12px;
             padding-top: 32px;
             border-top: 1px solid #eef2f6;
         }
@@ -199,191 +522,613 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 15px;
-            padding: 14px 36px;
+            padding: 14px 32px;
             border-radius: 60px;
-            transition: 0.25s ease;
+            transition: all 0.25s ease;
             min-width: 190px;
             border: 1px solid transparent;
             letter-spacing: 0.2px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            cursor: pointer;
         }
 
         .btn:hover {
             background: #0284c7;
-            transform: translateY(-3px);
-            box-shadow: 0 14px 24px -8px rgba(2, 132, 199, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(2, 132, 199, 0.25);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid #0284c7;
+            outline-offset: 3px;
         }
 
         .btn-outline {
             background: transparent;
             color: #0f172a;
             border: 1px solid #d4dce6;
-            box-shadow: none;
         }
 
         .btn-outline:hover {
             background: #f1f5f9;
             border-color: #94a3b8;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.04);
         }
 
-        .footer-note {
-            text-align: center;
+        /* ---------- back to top ---------- */
+        .back-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: #0f172a;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: all 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-top:hover {
+            background: #0284c7;
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(2, 132, 199, 0.3);
+        }
+
+        .back-top:focus-visible {
+            outline: 2px solid #0284c7;
+            outline-offset: 4px;
+        }
+
+        /* ---------- footer ---------- */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 24px 32px;
+            margin-top: 32px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand .footer-logo {
+            height: 40px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 8px;
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .footer-col a {
+            display: block;
+            text-decoration: none;
+            color: #64748b;
+            font-size: 14px;
+            padding: 4px 0;
+            transition: color 0.15s ease, padding-left 0.15s ease;
+        }
+
+        .footer-col a:hover {
+            color: #0284c7;
+            padding-left: 4px;
+        }
+
+        .footer-col a:focus-visible {
+            outline: 2px solid #0284c7;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 32px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid #ecf1f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom .copy {
             font-size: 13px;
             color: #94a3b8;
-            padding: 20px 0 4px;
-            border-top: 1px solid #ecf1f7;
-            margin-top: 30px;
-            letter-spacing: 0.2px;
         }
 
-        .footer-note span {
+        .footer-bottom .copy span {
             color: #475569;
         }
 
-        /* — responsive — */
-        @media (max-width: 700px) {
-            body {
-                padding: 12px;
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.15s ease;
+        }
+
+        .footer-social a:hover {
+            color: #0284c7;
+        }
+
+        /* ---------- responsive ---------- */
+        @media (max-width: 820px) {
+            .nav-desktop {
+                display: none;
             }
-            .card {
-                border-radius: 28px;
+
+            .hamburger {
+                display: flex;
             }
-            .brand-bar {
-                padding: 20px 16px 10px;
+
+            .header-inner {
+                height: 64px;
             }
-            .hero {
-                height: 200px;
-                padding: 0 20px 20px;
+
+            .hero-video {
+                height: 220px;
             }
-            .hero-overlay {
-                padding: 12px 20px;
+
+            .hero-overlay-content h1 {
+                font-size: 24px;
             }
-            .hero-overlay h1 {
-                font-size: 20px;
+
+            .hero-overlay-content p {
+                font-size: 15px;
             }
-            .hero-overlay .sub {
-                font-size: 12px;
-                margin-left: 6px;
-                display: block;
-                margin-top: 4px;
-            }
-            .content {
+
+            .content-inner {
                 padding: 28px 20px 32px;
             }
-            h2 {
-                font-size: 18px;
-                margin-top: 32px;
+
+            .trust-badge {
+                gap: 12px 24px;
+                padding: 14px 16px;
             }
-            .highlight {
-                padding: 18px 20px;
+
+            .trust-item {
+                font-size: 13px;
             }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
             .btn {
                 width: 100%;
                 min-width: unset;
                 padding: 14px 20px;
             }
-            .badge-group {
-                flex-direction: column;
-                align-items: stretch;
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+
+            .back-top {
+                bottom: 20px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
             }
         }
 
-        @media (max-width: 420px) {
-            .hero-overlay h1 {
-                font-size: 17px;
+        @media (max-width: 480px) {
+            .hero-video {
+                height: 180px;
             }
-            .hero-overlay .sub {
-                font-size: 11px;
+
+            .hero-overlay-content h1 {
+                font-size: 20px;
+            }
+
+            .hero-overlay-content p {
+                font-size: 13px;
+            }
+
+            .content-inner h1 {
+                font-size: 22px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .trust-badge {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .logo {
+                height: 36px;
             }
         }
+        h2 .badge {
+    background: #0284c7;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    flex-shrink: 0;
+}
+
+h2 .badge svg {
+    width: 16px;
+    height: 16px;
+    stroke: white;
+}
     </style>
 </head>
+
 <body>
 
-    <div class="card">
+    <!-- ========== HEADER ========== -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a href="https://luviaplace.com" class="logo-link" target="_blank" rel="noopener" aria-label="Luvia Place - Accueil">
+                <img src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" alt="Luvia Place" class="logo" />
+            </a>
 
-        <!-- Logo -->
-        <div class="brand-bar">
-            <img src="https://whitelabel-production-addonsstac-whitelabelbucket-rr8j7rddkm0b.s3.amazonaws.com/images/colorLogo-1780309983098" alt="Luvia Place" class="logo" />
+            <nav class="nav-desktop" role="navigation" aria-label="Navigation principale">
+                <a href="https://luviaplace.com" target="_blank" rel="noopener">Luvia Place</a>
+                <a href="https://about.luviaplace.com" target="_blank" rel="noopener">À propos</a>
+                <a href="https://luviaplace.com" class="btn-nav" target="_blank" rel="noopener">Réserver</a>
+            </nav>
+
+            <button class="hamburger" id="menuToggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
-        <!-- Hero avec titre intégré -->
-        <div class="hero">
-            <div class="hero-overlay">
-                <h1>
-                    Protection Voyage &amp; Bagages
-                    <span class="sub">· couverture incluse</span>
-                </h1>
+        <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Navigation mobile">
+            <a href="https://luviaplace.com" target="_blank" rel="noopener">Luvia Place</a>
+            <a href="https://about.luviaplace.com" target="_blank" rel="noopener">À propos de nous</a>
+            <a href="https://luviaplace.com" class="btn-mobile" target="_blank" rel="noopener">Réserver</a>
+        </div>
+    </header>
+
+    <!-- ========== MAIN ========== -->
+    <main class="page-wrap" role="main">
+        <div class="hero-card">
+
+            <!-- Hero avec vidéo et dots -->
+            <div class="hero-video">
+                <video autoplay muted loop playsinline class="hero-video-element" aria-label="Vidéo d'illustration voyage">
+                    <source src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/2Planifiez.mp4" type="video/mp4" />
+                    <source src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Planifiez%201.mp4" type="video/mp4" />
+                    Votre navigateur ne supporte pas la lecture de vidéo.
+                </video>
+                <div class="hero-dots" aria-hidden="true"></div>
+                <div class="hero-overlay-content">
+                    <h1>Protection Voyage &amp; Bagages</h1>
+                    <p>Couverture incluse pour chaque billet</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Contenu principal -->
-        <div class="content">
+            <!-- Trust indicators -->
+<div class="trust-badge animate animate-1">
+    <span class="trust-item">
+        <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+            </svg>
+        </span>
+        Couverture incluse
+    </span>
+    <span class="trust-item">
+        <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+            </svg>
+        </span>
+        Partenaires : Tune Protect
+    </span>
+    <span class="trust-item">
+        <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+            </svg>
+        </span>
+        Déclaration simplifiée
+    </span>
+    <span class="trust-item">
+        <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+        </span>
+        Voyageurs protégés
+    </span>
+</div>
+            <div class="content-inner">
+                <h1 class="animate animate-2">Protection Voyage &amp; Bagages</h1>
+                <div class="subhead animate animate-3">Ce qu'il faut savoir sur votre couverture incluse</div>
 
-            <p class="lead">
-                Chez <strong>Luvia Place</strong>, nous voulons que votre expérience de réservation et votre voyage soient aussi fluides que sereins. C'est pourquoi, pour chaque billet d'avion acheté sur notre plateforme, une protection pour vos bagages est automatiquement incluse, sans aucun frais supplémentaire ni démarche administrative de votre part.
-            </p>
-            <p>
-                Cependant, pour que vous voyagiez en toute lucidité, il est important de comprendre le cadre juridique et le fonctionnement de cette couverture.
-            </p>
-
-            <!-- 1 -->
-            <h2><span>1</span> Cadre Juridique et Rôle de Luvia Place</h2>
-            <p>
-                Luvia Place est une plateforme numérique de réservation de services de voyage (billets d'avion et hébergements). <strong>Luvia Place n'exerce pas l'activité de compagnie d'assurance, de courtier, ni d'intermédiaire direct en assurance.</strong>
-            </p>
-            <p>
-                La protection dont vous bénéficiez est un avantage commercial acquis par Luvia Place auprès de ses fournisseurs et partenaires de distribution B2B. Elle est opérée de manière finale par des compagnies d'assurance agréées (telles que Tune Protect). Par conséquent, aucun contrat d'assurance n'est conclu directement entre Luvia Place et l'utilisateur final.
-            </p>
-
-            <!-- 2 -->
-            <h2><span>2</span> Exécution et Gestion des Sinistres</h2>
-            <p>
-                La couverture de vos bagages (perte, vol ou détérioration) est régie <strong>exclusivement</strong> par les conditions générales, les plafonds d'indemnisation, les franchises et les exclusions de la compagnie d'assurance émettrice qui couvre votre trajet.
-            </p>
-
-            <div class="highlight">
-                <p>
-                    En cas de sinistre, seule la compagnie d'assurance agréée est habilitée à analyser votre dossier, à valider votre éligibilité et à procéder à l'indemnisation. Luvia Place décline toute responsabilité quant au traitement, aux délais ou aux décisions de refus d'indemnisation de l'assureur.
+                <p class="animate animate-4">
+                    Chez <strong>Luvia Place</strong>, nous voulons que votre expérience de réservation et votre voyage soient aussi fluides que sereins. C'est pourquoi, pour chaque billet d'avion acheté sur notre plateforme, une protection pour vos bagages est automatiquement incluse, sans aucun frais supplémentaire ni démarche administrative de votre part.
                 </p>
+                <p class="animate animate-5">
+                    Cependant, pour que vous voyagiez en toute lucidité, il est important de comprendre le cadre juridique et le fonctionnement de cette couverture.
+                </p>
+
+                <!-- 1 -->
+                <h2 class="animate animate-6"><span class="badge" aria-hidden="true">1</span> Cadre Juridique et Rôle de Luvia Place</h2>
+                <p class="animate animate-7">
+                    Luvia Place est une plateforme numérique de réservation de services de voyage (billets d'avion et hébergements). <strong>Luvia Place n'exerce pas l'activité de compagnie d'assurance, de courtier, ni d'intermédiaire direct en assurance.</strong>
+                </p>
+                <p>
+                    La protection dont vous bénéficiez est un avantage commercial acquis par Luvia Place auprès de ses fournisseurs et partenaires de distribution B2B. Elle est opérée de manière finale par des compagnies d'assurance agréées (telles que Tune Protect). Par conséquent, aucun contrat d'assurance n'est conclu directement entre Luvia Place et l'utilisateur final.
+                </p>
+
+                <!-- 2 -->
+                <h2><span class="badge" aria-hidden="true">2</span> Exécution et Gestion des Sinistres</h2>
+                <p>
+                    La couverture de vos bagages (perte, vol ou détérioration) est régie <strong>exclusivement</strong> par les conditions générales, les plafonds d'indemnisation, les franchises et les exclusions de la compagnie d'assurance émettrice qui couvre votre trajet.
+                </p>
+
+                <div class="highlight-box">
+                    <p>En cas de sinistre, seule la compagnie d'assurance agréée est habilitée à analyser votre dossier, à valider votre éligibilité et à procéder à l'indemnisation. Luvia Place décline toute responsabilité quant au traitement, aux délais ou aux décisions de refus d'indemnisation de l'assureur.</p>
+                </div>
+
+                <!-- 3 -->
+                <h2><span class="badge" aria-hidden="true">3</span> Procédure en Cas de Sinistre</h2>
+                <p>Si vos bagages sont perdus ou endommagés durant votre trajet, veuillez suivre scrupuleusement les étapes suivantes :</p>
+                <ol>
+                    <li><strong>Déclaration à l'aéroport :</strong> Faites constater le sinistre immédiatement auprès de la compagnie aérienne qui opère votre vol avant de quitter l'aéroport afin d'obtenir un rapport d'irrégularité de propriété (P.I.R.).</li>
+                    <li><strong>Consultation de vos documents :</strong> Référez-vous à votre email de confirmation de réservation Luvia Place pour identifier les coordonnées directes du support de l'assureur associé à votre trajet.</li>
+                    <li><strong>Soumission du dossier :</strong> Contactez et transmettez votre demande directement à la compagnie d'assurance en y joignant toutes les pièces justificatives requises (P.I.R., billets, reçus).</li>
+                </ol>
+
+                <!-- 4 -->
+                <h2><span class="badge" aria-hidden="true">4</span> Liens Utiles &amp; Conditions de l'Assureur</h2>
+                <p>
+                    Les conditions exactes de prise en charge dépendent de votre destination et de la réglementation de la compagnie aérienne partenaire. Vous pouvez accéder directement aux portails d'information et de déclaration de l'assureur Tune Protect via les liens officiels ci-dessous :
+                </p>
+
+                <div class="btn-group">
+                    <a href="https://www.tuneprotect.com/" class="btn" target="_blank" rel="noopener">Consulter Tune Protect</a>
+                    <a href="https://www.tuneprotect.com/my/how-to-claim/" class="btn btn-outline" target="_blank" rel="noopener">Déclarer un Sinistre</a>
+                    <a href="https://www.tuneprotect.com/my/help-support/" class="btn btn-outline" target="_blank" rel="noopener">Centre d'Aide &amp; Support</a>
+                </div>
+
+               <!-- FAQ - version corrigée sans emoji -->
+<div class="faq-section">
+    <h2><span class="badge" aria-hidden="true">?</span> Questions fréquentes</h2>
+    <p class="faq-intro">
+        Pour toute question relative à votre couverture, à l'éligibilité ou aux démarches, nous vous invitons à consulter directement le portail d'assistance de <strong>Tune Protect</strong>.
+    </p>
+    <div class="faq-grid">
+        <div class="faq-item">
+            <div class="question">Comment savoir si je suis couvert ?</div>
+            <div class="answer">Consultez les conditions générales sur <a href="https://www.tuneprotect.com/" target="_blank" rel="noopener">Tune Protect</a>.</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">Quels sont les plafonds d'indemnisation ?</div>
+            <div class="answer">Les plafonds varient selon votre destination. Voir <a href="https://www.tuneprotect.com/" target="_blank" rel="noopener">les conditions</a>.</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">Comment déclarer un sinistre ?</div>
+            <div class="answer">Utilisez le formulaire en ligne sur <a href="https://www.tuneprotect.com/my/how-to-claim/" target="_blank" rel="noopener">How to Claim</a>.</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">Que faire en cas de refus ?</div>
+            <div class="answer">Contactez le support de Tune Protect via <a href="https://www.tuneprotect.com/my/help-support/" target="_blank" rel="noopener">leur centre d'aide</a>.</div>
+        </div>
+    </div>
+</div>
+
+            </div> <!-- /content-inner -->
+        </div> <!-- /hero-card -->
+    </main>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <button class="back-top" id="backTop" aria-label="Retour en haut de la page" title="Retour en haut">
+        <span aria-hidden="true">&#8593;</span>
+    </button>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="https://luviaplace.com" target="_blank" rel="noopener">
+                    <img src="https://ukbekfcjfcjcqrpxfpmq.supabase.co/storage/v1/object/public/logo%20luvia/Luvia%20Place%20logo%20fond%20bleu.png" alt="Luvia Place" class="footer-logo" />
+                </a>
+                <p>Plateforme de réservation de voyages. Protection bagages incluse pour chaque billet d'avion.</p>
             </div>
 
-            <!-- 3 -->
-            <h2><span>3</span> Procédure en Cas de Sinistre</h2>
-            <p>Si vos bagages sont perdus ou endommagés durant votre trajet, veuillez suivre scrupuleusement les étapes suivantes :</p>
-            <ol>
-                <li><strong>Déclaration à l'aéroport :</strong> Faites constater le sinistre immédiatement auprès de la compagnie aérienne qui opère votre vol avant de quitter l'aéroport afin d'obtenir un rapport d'irrégularité de propriété (P.I.R.).</li>
-                <li><strong>Consultation de vos documents :</strong> Référez-vous à votre email de confirmation de réservation Luvia Place pour identifier les coordonnées directes du support de l'assureur associé à votre trajet.</li>
-                <li><strong>Soumission du dossier :</strong> Contactez et transmettez votre demande directement à la compagnie d'assurance en y joignant toutes les pièces justificatives requises (P.I.R., billets, reçus).</li>
-            </ol>
-
-            <!-- 4 -->
-            <h2><span>4</span> Liens Utiles &amp; Conditions de l'Assureur</h2>
-            <p>
-                Les conditions exactes de prise en charge dépendent de votre destination et de la réglementation de la compagnie aérienne partenaire. Vous pouvez accéder directement aux portails d'information et de déclaration de l'assureur Tune Protect via les liens officiels ci-dessous :
-            </p>
-
-            <!-- Boutons épurés -->
-            <div class="badge-group">
-                <a href="https://www.tuneprotect.com/" class="btn" target="_blank">
-                    Consulter Tune Protect
-                </a>
-                <a href="https://www.tuneprotect.com/my/how-to-claim/" class="btn btn-outline" target="_blank">
-                    Déclarer un Sinistre
-                </a>
-                <a href="https://www.tuneprotect.com/my/help-support/" class="btn btn-outline" target="_blank">
-                    Centre d'Aide &amp; Support
-                </a>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="https://luviaplace.com" target="_blank" rel="noopener">Accueil</a>
+                <a href="https://luviaplace.com/recherche" target="_blank" rel="noopener">Rechercher un vol</a>
+                <a href="https://about.luviaplace.com" target="_blank" rel="noopener">À propos</a>
             </div>
 
-            <div class="footer-note">
-                <span>&copy; 2026 luviaplace.com</span> · Tous droits réservés. Luvia Place est une marque de services de voyage.
+            <div class="footer-col">
+                <h4>Assistance</h4>
+                <a href="https://www.tuneprotect.com/" target="_blank" rel="noopener">Tune Protect</a>
+                <a href="https://www.tuneprotect.com/my/how-to-claim/" target="_blank" rel="noopener">Déclarer un sinistre</a>
+                <a href="https://www.tuneprotect.com/my/help-support/" target="_blank" rel="noopener">Centre d'aide</a>
             </div>
 
-        </div> <!-- /content -->
-    </div> <!-- /card -->
+            <div class="footer-col">
+                <h4>Légal</h4>
+                <a href="https://luviaplace.com/mentions-legales" target="_blank" rel="noopener">Mentions légales</a>
+                <a href="https://luviaplace.com/cgv" target="_blank" rel="noopener">CGV</a>
+                <a href="https://luviaplace.com/politique-confidentialite" target="_blank" rel="noopener">Confidentialité</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copy">
+                &copy; 2026 <span>luviaplace.com</span> · Tous droits réservés.
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com/luviaplace" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+                <a href="https://instagram.com/luviaplace" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+                <a href="https://twitter.com/luviaplace" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+                <a href="https://linkedin.com/company/luviaplace" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---------- Mobile menu ----------
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('mobileMenu');
+
+            function toggleMenu(open) {
+                const isOpen = typeof open === 'boolean' ? open : !menu.classList.contains('open');
+                menu.classList.toggle('open', isOpen);
+                toggle.setAttribute('aria-expanded', isOpen);
+            }
+
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            menu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleMenu(false);
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                    toggleMenu(false);
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menu.classList.contains('open')) {
+                    toggleMenu(false);
+                    toggle.focus();
+                }
+            });
+
+            // ---------- Back to top ----------
+            const backBtn = document.getElementById('backTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    backBtn.classList.add('visible');
+                } else {
+                    backBtn.classList.remove('visible');
+                }
+            });
+
+            backBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            backBtn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+
+            // ---------- Animations au scroll (Intersection Observer) ----------
+            const animatedElements = document.querySelectorAll('.animate');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(function(el) {
+                    el.style.opacity = '1';
+                });
+            }
+
+        })();
+    </script>
 
 </body>
 </html>
